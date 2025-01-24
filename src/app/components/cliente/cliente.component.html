@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-between m-0 p-3">
+    <h5 class="col my-auto p-0" style="width: fit-content;">Cliente: {{cliente.nome}}</h5>
+    <div>
+        <button *ngIf="userLogged.nome == 'admin'" type="button" class="btn btn-primary col-auto me-2"
+            (click)="openModel()">Editar</button>
+        <button type="button" class="btn btn-outline-light col-auto"
+            routerLink="/clientes">Voltar</button>
+    </div>
+</div>
+
+<div class="p-0 mx-3 my-1 border border-2 border-info-subtle rounded-3" style="overflow: hidden;">
+    <table class="table border-info-subtle mb-0">
+        <thead style="--bs-table-bg: rgba(13, 202, 240, 0.1);">
+            <tr>
+                <th scope="col">Dados</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider border-info-subtle">
+            <tr>
+                <th scope="row">Id</th>
+                <td>{{cliente.id}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Nome</th>
+                <td>{{cliente.nome}}</td>
+            </tr>
+            <tr>
+                <th scope="row">CPF</th>
+                <td>{{cliente.cpf.substring(0,3)+'.'+cliente.cpf.substring(3,6)+'.'+cliente.cpf.substring(6,9)+'-'+cliente.cpf.substring(9)}}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">CEP</th>
+                <td>{{cliente.cep.substring(0,5)+'-'+cliente.cep.substring(5)}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Logradouro</th>
+                <td>{{cliente.logradouro}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Bairro</th>
+                <td>{{cliente.bairro}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Cidade</th>
+                <td>{{cliente.cidade}}</td>
+            </tr>
+            <tr>
+                <th scope="row">UF</th>
+                <td>{{cliente.uf}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Complemento</th>
+                <td>{{cliente.complEndrc}}</td>
+            </tr>
+            <tr *ngFor="let email of emailList; index as i">
+                <th scope="row">Email {{i+1}}</th>
+                <td>{{email.endereco}}</td>
+            </tr>
+            <tr *ngFor="let tel of telefoneList">
+                <th scope="row">Telefone {{tel.tipo}}</th>
+                <td *ngIf="tel.tipo == 'Residencial' || tel.tipo == 'Comercial'">{{"("+tel.numero.substring(0,2)+")
+                    "+tel.numero.substring(2,6)+"-"+tel.numero.substring(6,10)}}</td>
+                <td *ngIf="tel.tipo == 'Celular'">{{"("+tel.numero.substring(0,2)+")
+                    "+tel.numero.substring(2,7)+"-"+tel.numero.substring(7,11)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between m-0 p-3">
+    <h5 class="col my-auto p-0">Clientes</h5>
+    <div>
+        <button *ngIf="userLogged.nome == 'admin'" type="button" class="btn btn-primary col-auto me-3"
+            (click)="openModel()">Adicionar cliente</button>
+        <button type="button" class="btn btn-outline-light col-auto"
+            (click)="logout()">Logout</button>
+    </div>
+
+</div>
+
+<div class="p-0 mx-3 my-1 border border-2 border-info-subtle rounded-3" style="overflow: hidden;">
+    <table class="table border-info-subtle mb-0">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">CEP</th>
+                <th scope="col">Outros Dados</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider border-info-subtle">
+            <tr *ngFor="let cliente of clienteList">
+                <th scope="row">{{cliente.id}}</th>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.cpf.substring(0,3)+'.'+cliente.cpf.substring(3,6)+'.'+cliente.cpf.substring(6,9)+'-'+cliente.cpf.substring(9)}}
+                </td>
+                <td>{{cliente.cep.substring(0,5)+'-'+cliente.cep.substring(5)}}</td>
+                <td>
+                    <div class="row m-0">
+                        <button type="button" class="btn btn-outline-light w-auto" data-bs-toggle="modal"
+                            data-bs-target="#EditAddUser" (click)="viewCliente(cliente.id)">Ver</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

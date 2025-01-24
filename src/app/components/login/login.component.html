@@ -1,0 +1,16 @@
+<div class="login-container border rounded px-4 py-3">
+    <form (ngSubmit)="login()">
+        <div class="mb-3">
+            <label for="inputNome" class="form-label">Nome do usuário</label>
+            <input type="text" [(ngModel)]="userCreds.nome" name="username" placeholder="Username" class="form-control"
+                id="inputNome">
+            <div class="form-text">Dica: "admin" ou "padrao"</div>
+        </div>
+        <div class="mb-3">
+            <label for="inputSenha" class="form-label">Senha</label>
+            <input type="password" [(ngModel)]="userCreds.senha" name="password" placeholder="Password"
+                class="form-control" id="inputSenha">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
