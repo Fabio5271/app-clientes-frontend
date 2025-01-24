@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
+## Como testar o app
+
+- Instale o Node.js</br>
+- Install o Angular CLI utilizando o npm em um terminal:</br>
+  `npm install -g @angular/cli`</br>
+- Siga as instruções no [repositório](https://github.com/Fabio5271/app-clientes-backend") do back-end</br>
+- Clone esse repositório</br>
+- Rode `ng serve -o` em um terminal na pasta do projeto
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
