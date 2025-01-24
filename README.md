@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Como testar o app
 
 - Instale o Node.js</br>
-- Install o Angular CLI utilizando o npm em um terminal:</br>
+- Instale o Angular CLI utilizando o npm em um terminal:</br>
   `npm install -g @angular/cli`</br>
 - Siga as instruções no [repositório](https://github.com/Fabio5271/app-clientes-backend") do back-end</br>
 - Clone esse repositório</br>
