@@ -2,7 +2,7 @@
     <form (ngSubmit)="updateCliente()" [formGroup]="cform">
         <div class="mb-3">
             <label for="inputNome" class="form-label">Nome</label>
-            <input type="text" name="nome" placeholder="Nome" class="form-control" id="inputNome" formControlName="nome"
+            <input type="text" name="nome" placeholder="{{cliente.nome}}" class="form-control" id="inputNome" formControlName="nome"
                 required>
             <div *ngIf="nome?.invalid && (nome?.dirty || nome?.touched)" class="alert alert-danger">
                 <div *ngIf="nome?.hasError('required')"> Preencha o nome. </div>
@@ -14,6 +14,7 @@
                 formControlName="cpf" required>
             <div *ngIf="cpf?.invalid && (cpf?.dirty || cpf?.touched)" class="alert alert-danger">
                 <div *ngIf="cpf?.hasError('required')"> Preencha o CPF. </div>
+                <div *ngIf="cpf?.invalid"> CPF inválido. </div>
             </div>
         </div>
         <div class="mb-3">
@@ -22,6 +23,7 @@
                 formControlName="cep" required>
             <div *ngIf="cep?.invalid && (cep?.dirty || cep?.touched)" class="alert alert-danger">
                 <div *ngIf="cep?.hasError('required')"> Preencha o CEP. </div>
+                <div *ngIf="cep?.invalid"> CEP inválido. </div>
             </div>
         </div>
         <div class="mb-3">

@@ -32,7 +32,6 @@ export class ClienteEditorComponent {
   emailList: Email[] = [];
   telefoneList: Telefone[] = [];
   userLogged: Usuario = JSON.parse(localStorage.getItem('userCreds')!);
-
   cform = new FormGroup({
     nome: new FormControl(this.cliente.nome, Validators.required),
     cpf: new FormControl(this.cliente.cpf, Validators.required),
@@ -42,13 +41,27 @@ export class ClienteEditorComponent {
     cidade: new FormControl(this.cliente.cidade, Validators.required),
     uf: new FormControl(this.cliente.uf, Validators.required),
     compl: new FormControl(this.cliente.complEndrc),
-  })
+  });
 
-  
+  // ngOnInit(): void {
+  //   this.getCliente();
+  //   this.cform = new FormGroup({
+  //     nome: new FormControl(this.cliente.nome, Validators.required),
+  //     cpf: new FormControl(this.cliente.cpf, Validators.required),
+  //     cep: new FormControl(this.cliente.cep, Validators.required),
+  //     lograd: new FormControl(this.cliente.logradouro, Validators.required),
+  //     bairro: new FormControl(this.cliente.bairro, Validators.required),
+  //     cidade: new FormControl(this.cliente.cidade, Validators.required),
+  //     uf: new FormControl(this.cliente.uf, Validators.required),
+  //     compl: new FormControl(this.cliente.complEndrc),
+  //   })
+  // }
+
+
   get nome() {
     return this.cform.get('nome');
   }
-  
+
   get cpf() {
     return this.cform.get('cpf');
   }
@@ -81,6 +94,14 @@ export class ClienteEditorComponent {
   getCliente() {
     this.clientesService.get(this.cid).subscribe((cliente: Cliente) => {
       this.cliente = cliente;
+      this.nome?.setValue(cliente.nome);
+      this.cpf?.setValue(cliente.cpf);
+      this.cep?.setValue(cliente.cep);
+      this.lograd?.setValue(cliente.logradouro);
+      this.bairro?.setValue(cliente.bairro);
+      this.cidade?.setValue(cliente.cidade);
+      this.uf?.setValue(cliente.uf);
+      this.compl?.setValue(cliente.complEndrc);
     });
   }
 
