@@ -1,0 +1,70 @@
+<div class="login-container border rounded px-4 py-3">
+    <form (ngSubmit)="updateCliente()" [formGroup]="cform">
+        <div class="mb-3">
+            <label for="inputNome" class="form-label">Nome</label>
+            <input type="text" name="nome" placeholder="Nome" class="form-control" id="inputNome" formControlName="nome"
+                required>
+            <div *ngIf="nome?.invalid && (nome?.dirty || nome?.touched)" class="alert alert-danger">
+                <div *ngIf="nome?.hasError('required')"> Preencha o nome. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputCPF" class="form-label">CPF</label>
+            <input type="text" name="cpf" placeholder="CPF" class="form-control" id="inputCPF" mask="000.000.000-00"
+                formControlName="cpf" required>
+            <div *ngIf="cpf?.invalid && (cpf?.dirty || cpf?.touched)" class="alert alert-danger">
+                <div *ngIf="cpf?.hasError('required')"> Preencha o CPF. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputCEP" class="form-label">CEP</label>
+            <input type="text" name="cep" placeholder="CEP" class="form-control" id="inputCEP" mask="00.000-000"
+                formControlName="cep" required>
+            <div *ngIf="cep?.invalid && (cep?.dirty || cep?.touched)" class="alert alert-danger">
+                <div *ngIf="cep?.hasError('required')"> Preencha o CEP. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputLogradouro" class="form-label">Logradouro</label>
+            <input type="text" name="logradouro" placeholder="Logradouro" class="form-control" id="inputLogradouro"
+                formControlName="lograd" required>
+            <div *ngIf="lograd?.invalid && (lograd?.dirty || lograd?.touched)" class="alert alert-danger">
+                <div *ngIf="lograd?.hasError('required')"> Preencha o logradouro. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputBairro" class="form-label">Bairro</label>
+            <input type="text" name="bairro" placeholder="Bairro" class="form-control" id="inputBairro"
+                formControlName="bairro" required>
+            <div *ngIf="bairro?.invalid && (bairro?.dirty || bairro?.touched)" class="alert alert-danger">
+                <div *ngIf="bairro?.hasError('required')"> Preencha o bairro. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputCidade" class="form-label">Cidade</label>
+            <input type="text" name="cidade" placeholder="Cidade" class="form-control" id="inputCidade"
+                formControlName="cidade" required>
+            <div *ngIf="cidade?.invalid && (cidade?.dirty || cidade?.touched)" class="alert alert-danger">
+                <div *ngIf="cidade?.hasError('required')"> Preencha a cidade. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputUF" class="form-label">UF</label>
+            <input type="text" name="uf" placeholder="UF" class="form-control" id="inputUF" formControlName="uf"
+                required>
+            <div *ngIf="uf?.invalid && (uf?.dirty || uf?.touched)" class="alert alert-danger">
+                <div *ngIf="uf?.hasError('required')"> Preencha a UF. </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputComplemento" class="form-label">Complemento</label>
+            <input type="text" name="complemento" placeholder="Complemento" class="form-control" id="inputComplemento"
+                formControlName="compl">
+            <!-- <div *ngIf="compl?.invalid && (compl?.dirty || compl?.touched)" class="alert alert-danger">
+                <div *ngIf="compl?.hasError('required')"> Name is required. </div>
+            </div> -->
+        </div>
+
+        <button type="submit" [disabled]="cform.invalid" class="btn btn-primary">Salvar</button>
+    </form>
+</div>

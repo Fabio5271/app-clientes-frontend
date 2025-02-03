@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
 import { ClientesService } from '../../services/clientes.service';
 import { Cliente } from '../../models/cliente';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { EmailService } from '../../services/email.service';
 import { TelefoneService } from '../../services/telefone.service';
 import { Email } from '../../models/email';
 import { Telefone } from '../../models/telefone';
 import { NgFor, NgIf } from '@angular/common';
 import { Usuario } from '../../models/usuario';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cliente',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [NgFor, NgIf, RouterLink, ReactiveFormsModule, FormsModule],
   templateUrl: './cliente.component.html',
   styleUrl: './cliente.component.css'
 })
 export class ClienteComponent {
-  constructor(private clientesService: ClientesService, private emailService: EmailService, private telefoneService: TelefoneService, private route: ActivatedRoute) {
+  constructor(private clientesService: ClientesService, private emailService: EmailService, private telefoneService: TelefoneService, private route: ActivatedRoute, private router: Router) {
     this.getCliente();
     this.getEmails();
     this.getTelefones();
@@ -37,15 +38,22 @@ export class ClienteComponent {
   }
 
   updateCliente() {
-    this.clientesService.update(this.newCliente).subscribe({
-      next: () => {
-        alert("Cliente atualizado!");
-        window.location.reload;
-      },
-      error: () => {
-        alert("Erro ao atualizar cliente");
-      }
-    })
+    this.clientesService.update(this.newCliente);
+    // .subscribe({
+    //   next: () => {
+    //     alert("Cliente atualizado!");
+    //     window.location.reload;
+    //   },
+    //   error: () => {
+    //     alert("Erro ao atualizar cliente");
+    //   }
+    // })
+    for (let email of this.emailList) {
+      this.emailService.update(email);
+    }
+    for (let telefone of this.telefoneList) {
+      this.telefoneService.update(telefone);
+    }
   }
 
   deleteCliente() {
@@ -98,13 +106,8 @@ export class ClienteComponent {
     });
   }
 
-  openModel(cliente: Cliente = new Cliente) {
-    if (cliente.id == null) {
-      this.createMode = true;
-      this.newCliente = new Cliente();
-    } else {
-      this.createMode = false;
-      this.newCliente = cliente;
-    }
+  editCliente() {
+    this.router.navigate(['edit/', this.cid]);
+    
   }
 }

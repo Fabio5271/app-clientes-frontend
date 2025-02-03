@@ -1,10 +1,9 @@
 <div class="d-flex justify-content-between m-0 p-3">
     <h5 class="col my-auto p-0" style="width: fit-content;">Cliente: {{cliente.nome}}</h5>
     <div>
-        <button *ngIf="userLogged.nome == 'admin'" type="button" class="btn btn-primary col-auto me-2"
-            (click)="openModel()">Editar</button>
-        <button type="button" class="btn btn-outline-light col-auto"
-            routerLink="/clientes">Voltar</button>
+        <button *ngIf="userLogged.nome == 'admin'" type="button" class="btn btn-primary col-auto me-2" I
+            (click)="editCliente()">Editar</button>
+        <button type="button" class="btn btn-outline-light col-auto" routerLink="/clientes">Voltar</button>
     </div>
 </div>
 
@@ -32,7 +31,7 @@
             </tr>
             <tr>
                 <th scope="row">CEP</th>
-                <td>{{cliente.cep.substring(0,5)+'-'+cliente.cep.substring(5)}}</td>
+                <td>{{cliente.cep.substring(0,2)+'.'+cliente.cep.substring(2,5)+'-'+cliente.cep.substring(5)}}</td>
             </tr>
             <tr>
                 <th scope="row">Logradouro</th>
@@ -60,10 +59,8 @@
             </tr>
             <tr *ngFor="let tel of telefoneList">
                 <th scope="row">Telefone {{tel.tipo}}</th>
-                <td *ngIf="tel.tipo == 'Residencial' || tel.tipo == 'Comercial'">{{"("+tel.numero.substring(0,2)+")
-                    "+tel.numero.substring(2,6)+"-"+tel.numero.substring(6,10)}}</td>
-                <td *ngIf="tel.tipo == 'Celular'">{{"("+tel.numero.substring(0,2)+")
-                    "+tel.numero.substring(2,7)+"-"+tel.numero.substring(7,11)}}</td>
+                <td *ngIf="tel.tipo == 'Residencial' || tel.tipo == 'Comercial'">{{"("+tel.numero.substring(0,2)+") "+tel.numero.substring(2,6)+"-"+tel.numero.substring(6,10)}}</td>
+                <td *ngIf="tel.tipo == 'Celular'">{{"("+tel.numero.substring(0,2)+") "+tel.numero.substring(2,7)+"-"+tel.numero.substring(7,11)}}</td>
             </tr>
         </tbody>
     </table>

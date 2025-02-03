@@ -26,7 +26,7 @@
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.cpf.substring(0,3)+'.'+cliente.cpf.substring(3,6)+'.'+cliente.cpf.substring(6,9)+'-'+cliente.cpf.substring(9)}}
                 </td>
-                <td>{{cliente.cep.substring(0,5)+'-'+cliente.cep.substring(5)}}</td>
+                <td>{{cliente.cep.substring(0,2)+'.'+cliente.cep.substring(2,5)+'-'+cliente.cep.substring(5)}}</td>
                 <td>
                     <div class="row m-0">
                         <button type="button" class="btn btn-outline-light w-auto" data-bs-toggle="modal"
